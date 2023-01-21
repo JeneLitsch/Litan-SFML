@@ -1,0 +1,1 @@
+ltn --src ltn/sfml.ltn test/main.ltn

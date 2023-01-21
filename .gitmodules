@@ -1,0 +1,3 @@
+[submodule "libs/api"]
+	path = libs/api
+	url = git@github.com:JeneLitsch/Litan-C-Api.git

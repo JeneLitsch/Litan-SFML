@@ -29,4 +29,19 @@ extern "C" {
 		const auto id = api->param_int(0, api->core);
 		windows.erase(id);
 	}
+
+
+
+	void sf_window_clear(CApi * api) {
+		const auto id = api->param_int(0, api->core);
+		const auto color = api->param_int(1, api->core);
+		windows.at(id)->clear(sf::Color{static_cast<std::uint32_t>(color)});
+	}
+
+
+
+	void sf_window_display(CApi * api) {
+		const auto id = api->param_int(0, api->core);
+		windows.at(id)->display();
+	}
 }

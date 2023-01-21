@@ -1,31 +1,9 @@
-namespace sf {
-	namespace bindings {
-		global window_open;
-		global window_is_open;
-		global window_destroy;
-	}
-
-	function init(path : string) {
-		var lib = std::lib::open(path);
-		global bindings::window_open    = std::lib::get_fx(lib, "sf_window_open");
-		global bindings::window_is_open = std::lib::get_fx(lib, "sf_window_is_open");
-		global bindings::window_destroy = std::lib::get_fx(lib, "sf_window_destroy");
-	}
-
-	namespace window {
-		function open()          => global bindings::window_open()
-		function is_open(window) => global bindings::window_is_open(window)
-		function destroy(window) => global bindings::window_destroy(window)
-	}
-}
-
-
-
 function main() {
 	sf::init("build/libltnsfml.so");
 	var window = sf::window::open();
 	while(sf::window::is_open(window)) {
-
+		sf::window::clear(window, 0xff000000);
+		sf::window::display(window);
 	}
 	sf::window::destroy(window);
 }

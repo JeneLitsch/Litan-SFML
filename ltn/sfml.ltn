@@ -1,0 +1,35 @@
+namespace sf {
+	namespace bindings {
+		global window_open;
+		global window_is_open;
+		global window_destroy;
+		global window_clear;
+		global window_display;
+	}
+
+	function init(path : string) {
+		var lib = std::lib::open(path);
+		global bindings::window_open    = std::lib::get_fx(lib, "sf_window_open");
+		global bindings::window_is_open = std::lib::get_fx(lib, "sf_window_is_open");
+		global bindings::window_destroy = std::lib::get_fx(lib, "sf_window_destroy");
+		global bindings::window_clear   = std::lib::get_fx(lib, "sf_window_clear");
+		global bindings::window_display = std::lib::get_fx(lib, "sf_window_display");
+	}
+
+	namespace window {
+		function open()
+			=> global bindings::window_open()
+		
+		function is_open(window)
+			=> global bindings::window_is_open(window)
+		
+		function destroy(window)
+			=> global bindings::window_destroy(window)
+		
+		function clear(window, color)
+			=> global bindings::window_clear(window, color)
+		
+		function display(window)
+			=> global bindings::window_display(window)
+	}
+}
